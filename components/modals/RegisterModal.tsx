@@ -71,18 +71,20 @@ const RegisterModal = () => {
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button
-        outline
-        icon={FcGoogle}
-        label="Continue With Google"
-        onClick={() => {}}
-      />
-      <Button
-        outline
-        icon={AiFillGithub}
-        label="Continue With Github"
-        onClick={() => {}}
-      />
+      <div className="flex justify-between items-center gap-4">
+        <Button
+          outline
+          icon={FcGoogle}
+          label="Google"
+          onClick={() => {}}
+        />
+        <Button
+          outline
+          icon={AiFillGithub}
+          label="Github"
+          onClick={() => {}}
+        />
+      </div>
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex items-center gap-2">
           <div>Already Have an Account?</div>
