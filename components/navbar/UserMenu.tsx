@@ -3,8 +3,10 @@ import React, { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
+import useRegisterModal from "@/hook/useRegisterModal";
 
 const UserMenu = () => {
+  const { onOpen } = useRegisterModal();
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     //Different from video
@@ -34,7 +36,7 @@ const UserMenu = () => {
           <div className="flex flex-col cursor-pointer">
             <>
               <MenuItem label="Login" onClick={() => {}} />
-              <MenuItem label="Sign Up" onClick={() => {}} />
+              <MenuItem label="Sign Up" onClick={onOpen} />
             </>
           </div>
         </div>

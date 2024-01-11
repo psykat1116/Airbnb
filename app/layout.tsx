@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Nunito, Poppins } from "next/font/google";
+import { Nunito, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
+import RegisterModal from "@/components/modals/RegisterModal";
+import ToaterProvider from "@/provider/ToastProvider";
 
 const nunito = Nunito({
   weight: ["300", "400", "500", "600", "700", "800", "900", "1000"],
@@ -31,6 +33,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunito.className}`}>
         <Navbar />
+        <ToaterProvider />
+        <RegisterModal />
         {children}
       </body>
     </html>
