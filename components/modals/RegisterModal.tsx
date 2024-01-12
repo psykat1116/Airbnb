@@ -29,10 +29,13 @@ const RegisterModal = () => {
 
   const onSumbit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
-    await axios
-      .post("/api/register", data)
-      .then(() => onClose())
-      .catch((err: any) => toast.error(err.message));
+    try {
+      const userData = await axios.post("/api/register", data);
+      toast.success("User Created Successfully");
+      onClose();
+    } catch (error: any) {
+      toast.error(error.message);
+    }
     setIsLoading(false);
   };
 
@@ -72,18 +75,8 @@ const RegisterModal = () => {
     <div className="flex flex-col gap-4 mt-3">
       <hr />
       <div className="flex justify-between items-center gap-4">
-        <Button
-          outline
-          icon={FcGoogle}
-          label="Google"
-          onClick={() => {}}
-        />
-        <Button
-          outline
-          icon={AiFillGithub}
-          label="Github"
-          onClick={() => {}}
-        />
+        <Button outline icon={FcGoogle} label="Google" onClick={() => {}} />
+        <Button outline icon={AiFillGithub} label="Github" onClick={() => {}} />
       </div>
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex items-center gap-2">
