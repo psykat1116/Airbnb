@@ -4,9 +4,9 @@ import { BiSearch } from "react-icons/bi";
 
 const Search = () => {
   return (
-    <div className="border w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer">
-      <div className="flex flex-row items-center justify-between">
-        <div className="text-sm font-semibold px-6">Any Where</div>
+    <div className="border w-full md:w-auto rounded-full shadow-sm transition cursor-pointer overflow-hidden">
+      <div className="flex items-center justify-between">
+        <div className="text-sm font-semibold px-6 py-4">Any Where</div>
         <div className="hidden sm:block text-sm font-semibold px-6 border-x flex-1 text-center">
           Any Week
         </div>

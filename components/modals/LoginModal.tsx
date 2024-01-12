@@ -1,30 +1,32 @@
 "use client";
 import React, { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
+import useLoginModal from "@/hook/useLoginModal";
 import useRegisterModal from "@/hook/useRegisterModal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
 
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import Button from "../Button";
-import useLoginModal from "@/hook/useLoginModal";
-import { signIn } from "next-auth/react";
 
-const RegisterModal = () => {
-  const { isOpen, onClose, onOpen } = useRegisterModal();
-  const { onOpen: onLoginOpen } = useLoginModal();
+const LoginModal = () => {
+  const router = useRouter();
+  const { isOpen, onClose, onOpen } = useLoginModal();
+  const { onOpen: onRegisterOpen } = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -32,36 +34,37 @@ const RegisterModal = () => {
 
   const onSumbit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
-    try {
-      const userData = await axios.post("/api/register", data);
-      toast.success("User Created Successfully");
-      onClose();
-    } catch (error: any) {
-      toast.error(error.message);
-    }
+    await signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      if (callback?.ok) {
+        toast.success("Logged in Successfully");
+        router.refresh();
+        onClose();
+      } else if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
+    reset();
     setIsLoading(false);
   };
 
   const switchModal = useCallback(() => {
     onClose();
-    onLoginOpen();
-  }, [onLoginOpen, onClose]);
+    onRegisterOpen();
+  }, [onRegisterOpen, onClose]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+      <Heading
+        title="Welcome back to Airbnb"
+        subtitle="Continue with your account!"
+      />
       <Input
         id="email"
         label="Email"
         type="email"
-        disabled={isLoading}
-        errors={errors}
-        required
-        register={register}
-      />
-      <Input
-        id="name"
-        label="Name"
         disabled={isLoading}
         errors={errors}
         required
@@ -98,12 +101,12 @@ const RegisterModal = () => {
       </div>
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex items-center gap-2">
-          <div>Already Have an Account?</div>
+          <div>Don&apos;t Have an Account?</div>
           <div
             onClick={switchModal}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Log in
+            Sign Up
           </div>
         </div>
       </div>
@@ -114,7 +117,7 @@ const RegisterModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={isOpen}
-      title="Register"
+      title="Login"
       actionLabel="Continue"
       onClose={onClose}
       onSubmit={handleSubmit(onSumbit)}
@@ -124,4 +127,4 @@ const RegisterModal = () => {
   );
 };
 
-export default RegisterModal;
+export default LoginModal;
