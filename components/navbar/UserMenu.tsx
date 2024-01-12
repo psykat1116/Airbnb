@@ -1,12 +1,19 @@
 "use client";
 import React, { useCallback, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hook/useRegisterModal";
 import useLoginModal from "@/hook/useLoginModal";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+
+import { AiOutlineMenu } from "react-icons/ai";
+import { GiCommercialAirplane } from "react-icons/gi";
+import { MdOutlineFavorite, MdLogout, MdLogin } from "react-icons/md";
+import { IoIosSettings } from "react-icons/io";
+import { FaAirbnb } from "react-icons/fa";
+import { BsFillHouseCheckFill } from "react-icons/bs";
+import { FaUserPlus } from "react-icons/fa6";
 
 interface UserMenuProps {
   currentUser?: User | null;
@@ -35,7 +42,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar src={currentUser?.image}/>
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
@@ -44,18 +51,42 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem label="My Trips" onClick={() => {}} />
-                <MenuItem label="My Favourites" onClick={() => {}} />
-                <MenuItem label="My Reservations" onClick={() => {}} />
-                <MenuItem label="My Properties" onClick={() => {}} />
-                <MenuItem label="Airbnb my home" onClick={() => {}} />
+                <MenuItem
+                  label="My Trips"
+                  onClick={() => {}}
+                  icon={GiCommercialAirplane}
+                />
+                <MenuItem
+                  label="My Favourites"
+                  onClick={() => {}}
+                  icon={MdOutlineFavorite}
+                />
+                <MenuItem
+                  label="My Reservations"
+                  onClick={() => {}}
+                  icon={BsFillHouseCheckFill}
+                />
+                <MenuItem
+                  label="My Properties"
+                  onClick={() => {}}
+                  icon={IoIosSettings}
+                />
+                <MenuItem
+                  label="Airbnb my home"
+                  onClick={() => {}}
+                  icon={FaAirbnb}
+                />
                 <hr />
-                <MenuItem label="Logout" onClick={() => signOut()} />
+                <MenuItem
+                  label="Logout"
+                  onClick={() => signOut()}
+                  icon={MdLogout}
+                />
               </>
             ) : (
               <>
-                <MenuItem label="Login" onClick={onLoginOpen} />
-                <MenuItem label="Sign Up" onClick={onOpen} />
+                <MenuItem label="Login" onClick={onLoginOpen} icon={MdLogin} />
+                <MenuItem label="Sign Up" onClick={onOpen} icon={FaUserPlus} />
               </>
             )}
           </div>

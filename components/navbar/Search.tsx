@@ -6,7 +6,7 @@ const Search = () => {
   return (
     <div className="border w-full md:w-auto rounded-full shadow-sm transition cursor-pointer overflow-hidden">
       <div className="flex items-center justify-between">
-        <div className="text-sm font-semibold px-6 py-4">Any Where</div>
+        <div className="text-sm font-semibold px-6 py-4 max-sm:text-xs">Any Where</div>
         <div className="hidden sm:block text-sm font-semibold px-6 border-x flex-1 text-center">
           Any Week
         </div>
