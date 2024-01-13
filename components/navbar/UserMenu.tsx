@@ -14,6 +14,7 @@ import { IoIosSettings } from "react-icons/io";
 import { FaAirbnb } from "react-icons/fa";
 import { BsFillHouseCheckFill } from "react-icons/bs";
 import { FaUserPlus } from "react-icons/fa6";
+import useRentModal from "@/hook/useRentModal";
 
 interface UserMenuProps {
   currentUser?: User | null;
@@ -22,16 +23,26 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const { onOpen } = useRegisterModal();
   const { onOpen: onLoginOpen } = useLoginModal();
+  const {onOpen: onRentOpen} = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleOpen = useCallback(() => {
     //Different from video
     setIsOpen(!isOpen);
   }, [isOpen]);
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return onLoginOpen();
+    }
+    onRentOpen();
+  }, [currentUser, onLoginOpen]);
+
   return (
     <div className="relative">
       <div className="flex flex-row gap-3 items-center">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
           Airbnb Your Home
@@ -73,7 +84,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 />
                 <MenuItem
                   label="Airbnb my home"
-                  onClick={() => {}}
+                  onClick={onRentOpen}
                   icon={FaAirbnb}
                 />
                 <hr />

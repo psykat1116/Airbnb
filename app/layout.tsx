@@ -6,6 +6,7 @@ import RegisterModal from "@/components/modals/RegisterModal";
 import ToaterProvider from "@/provider/ToastProvider";
 import LoginModal from "@/components/modals/LoginModal";
 import getCurrentUser from "@/actions/getCurrentUser";
+import RentModal from "@/components/modals/RentModal";
 
 const nunito = Nunito({
   weight: ["300", "400", "500", "600", "700", "800", "900", "1000"],
@@ -35,10 +36,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.className}`}>
-        <Navbar currentUser = {currentUser}/>
+        <Navbar currentUser={currentUser} />
         <ToaterProvider />
         <RegisterModal />
         <LoginModal />
+        <RentModal />
         {children}
       </body>
     </html>

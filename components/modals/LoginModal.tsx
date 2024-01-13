@@ -101,12 +101,12 @@ const LoginModal = () => {
       </div>
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex items-center gap-2">
-          <div>Don&apos;t Have an Account?</div>
+          <div>First Time Using Airbnb?</div>
           <div
             onClick={switchModal}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Sign Up
+            Create an account
           </div>
         </div>
       </div>
