@@ -23,7 +23,7 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const { onOpen } = useRegisterModal();
   const { onOpen: onLoginOpen } = useLoginModal();
-  const {onOpen: onRentOpen} = useRentModal();
+  const { onOpen: onRentOpen } = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -36,7 +36,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       return onLoginOpen();
     }
     onRentOpen();
-  }, [currentUser, onLoginOpen]);
+  }, [currentUser, onLoginOpen, onRentOpen]);
 
   return (
     <div className="relative">
