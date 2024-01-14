@@ -1,3 +1,4 @@
+import React from "react";
 import getCurrentUser from "@/actions/getCurrentUser";
 import getListings from "@/actions/getListings";
 import Container from "@/components/Container";
@@ -5,14 +6,14 @@ import Empty from "@/components/Empty";
 import ListingCard from "@/components/listings/ListingCard";
 
 interface HomeProps {
-  searchParams: {
+  params: {
     userId?: string;
   };
 }
 
-const Home = async ({ searchParams }: HomeProps) => {
+const Home = async ({ params }: HomeProps) => {
   const currentUser = await getCurrentUser();
-  const listings = await getListings(searchParams);
+  const listings = await getListings(params);
   if (!listings.length) return <Empty showReset />;
   return (
     <Container>
