@@ -32,7 +32,7 @@ const Map: React.FC<MapProps> = ({ center }) => {
   return (
     <MapContainer
       center={(center as LatLngExpression) || [0, 0]}
-      zoom={center ? 15 : 2}
+      zoom={center ? 10 : 2}
       scrollWheelZoom={true}
       className="h-[35vh] rounded-lg"
     >

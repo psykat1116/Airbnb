@@ -35,17 +35,17 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   const { getByValue } = useCountries();
   const coordinates = getByValue(locationValue)?.latlng;
   return (
-    <div className="col-span-4 flex flex-col gap-8">
+    <div className="col-span-4 flex flex-col gap-6">
       <div className="text-xl font-semibold flex items-center gap-2">
-        <div>Hosted by {user?.name}</div>
         <Avatar src={user?.image} />
+        <div>Hosted by {user?.name}</div>
       </div>
       <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
-        <p>{guestCount} Guests Per Room</p>
+        <p>{guestCount} Guests</p>
         <p>|</p>
         <p>{roomCount} Rooms</p>
         <p>|</p>
-        <p>{bathroomCount} Bathrooms Per Room</p>
+        <p>{bathroomCount} Bathrooms</p>
       </div>
       <hr />
       {category && (
