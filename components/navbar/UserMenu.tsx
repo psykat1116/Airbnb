@@ -1,5 +1,6 @@
 "use client";
 import React, { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hook/useRegisterModal";
@@ -21,6 +22,7 @@ interface UserMenuProps {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+  const router = useRouter();
   const { onOpen } = useRegisterModal();
   const { onOpen: onLoginOpen } = useLoginModal();
   const { onOpen: onRentOpen } = useRentModal();
@@ -64,7 +66,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               <>
                 <MenuItem
                   label="My Trips"
-                  onClick={() => {}}
+                  onClick={() => router.push("/trips")}
                   icon={GiCommercialAirplane}
                 />
                 <MenuItem

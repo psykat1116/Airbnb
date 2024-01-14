@@ -11,7 +11,7 @@ import { BiRupee } from "react-icons/bi";
 
 interface ListingCardProps {
   data: Listing;
-  reservation?: Reservation;
+  reservation?: Reservation & { listing: Listing };
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
