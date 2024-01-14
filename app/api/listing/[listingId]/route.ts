@@ -1,7 +1,6 @@
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/actions/getCurrentUser";
-import useCloudinary from "@/hook/useCloudinary";
 
 interface IParams {
   listingId?: string;
@@ -11,7 +10,6 @@ export async function DELETE(
   request: Request,
   { params }: { params: IParams }
 ) {
-  const cld = useCloudinary();
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json(
