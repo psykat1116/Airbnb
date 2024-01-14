@@ -3,12 +3,16 @@ import getListings from "@/actions/getListings";
 import Container from "@/components/Container";
 import Empty from "@/components/Empty";
 import ListingCard from "@/components/listings/ListingCard";
-import { User } from "@prisma/client";
-import Image from "next/image";
 
-const Home = async () => {
+interface HomeProps {
+  searchParams: {
+    userId?: string;
+  };
+}
+
+const Home = async ({ searchParams }: HomeProps) => {
   const currentUser = await getCurrentUser();
-  const listings = await getListings();
+  const listings = await getListings(searchParams);
   if (!listings.length) return <Empty showReset />;
   return (
     <Container>
