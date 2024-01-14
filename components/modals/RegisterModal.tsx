@@ -33,9 +33,10 @@ const RegisterModal = () => {
   const onSumbit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     try {
-      const userData = await axios.post("/api/register", data);
+      await axios.post("/api/register", data);
       toast.success("User Created Successfully");
       onClose();
+      onLoginOpen();
     } catch (error: any) {
       toast.error(error.message);
     }

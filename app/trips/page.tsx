@@ -7,7 +7,12 @@ import TripsClient from "@/components/TripsClient";
 const Page = async () => {
   const currentUser = await getCurrentUser();
   if (!currentUser)
-    return <Empty title="401" subtitle="Please Login to Authorise Yourself" />;
+    return (
+      <Empty
+        title="401 Unauthorized"
+        subtitle="Please Login to Authorise Yourself"
+      />
+    );
   const reservations = await getReservation({
     userId: currentUser.id,
   });
@@ -15,7 +20,7 @@ const Page = async () => {
     return (
       <Empty
         title="No Trips Found"
-        subtitle="Looked Like you have not reserved ant trips"
+        subtitle="Looked Like you have not reserved trips"
       />
     );
   }
