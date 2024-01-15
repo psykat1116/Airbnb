@@ -6,14 +6,21 @@ import Empty from "@/components/Empty";
 import ListingCard from "@/components/listings/ListingCard";
 
 interface HomeProps {
-  params: {
+  searchParams: {
     userId?: string;
+    guestCount?: number;
+    roomCount?: number;
+    bathroomCount?: number;
+    startDate?: string;
+    endDate?: string;
+    locationValue?: string;
+    category?: string;
   };
 }
 
-const Home = async ({ params }: HomeProps) => {
+const Home = async ({ searchParams }: HomeProps) => {
   const currentUser = await getCurrentUser();
-  const listings = await getListings(params);
+  const listings = await getListings(searchParams);
   if (!listings.length) return <Empty showReset />;
   return (
     <Container>

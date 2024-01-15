@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import L, { LatLngExpression } from "leaflet";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 
@@ -36,10 +36,7 @@ const Map: React.FC<MapProps> = ({ center }) => {
       scrollWheelZoom={true}
       className="h-[35vh] rounded-lg"
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {center && <Marker position={center as L.LatLngExpression} />}
       <SetViewOnClick center={center as LatLngExpression} />
     </MapContainer>
