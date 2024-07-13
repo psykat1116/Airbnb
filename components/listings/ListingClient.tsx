@@ -1,17 +1,18 @@
 "use client";
-import { Listing, Reservation, User } from "@prisma/client";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { CategorieList } from "@/constant/CategorieList";
-import Container from "../Container";
-import ListingHead from "./ListingHead";
-import ListingInfo from "./ListingInfo";
-import useLoginModal from "@/hook/useLoginModal";
-import { useRouter } from "next/navigation";
-import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import toast from "react-hot-toast";
-import ListingReservation from "./ListingReservation";
 import { Range } from "react-date-range";
+import { useRouter } from "next/navigation";
+import { Listing, Reservation, User } from "@prisma/client";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
+
+import Container from "@/components/Container";
+import useLoginModal from "@/hook/useLoginModal";
+import { CategorieList } from "@/constant/CategorieList";
+import ListingInfo from "@/components/listings/ListingInfo";
+import ListingHead from "@/components/listings/ListingHead";
+import ListingReservation from "@/components/listings/ListingReservation";
 
 const InitialDateRange: Range = {
   startDate: new Date(),

@@ -1,8 +1,8 @@
 "use client";
-import React, { useCallback, useState } from "react";
-import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
+import { useCallback } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
+import { CldUploadWidget } from "next-cloudinary";
 
 declare global {
   var cloudinary: any;

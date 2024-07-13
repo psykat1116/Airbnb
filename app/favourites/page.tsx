@@ -1,7 +1,6 @@
-import React from "react";
-import getCurrentUser from "@/actions/getCurrentUser";
 import Empty from "@/components/Empty";
 import getFavourites from "@/actions/getFavourites";
+import getCurrentUser from "@/actions/getCurrentUser";
 import FavouriteClient from "@/components/FavouriteClient";
 
 const Page = async () => {

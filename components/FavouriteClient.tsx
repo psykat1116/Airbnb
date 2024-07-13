@@ -1,8 +1,8 @@
 import { Listing, User } from "@prisma/client";
-import React from "react";
-import Container from "./Container";
-import Heading from "./Heading";
-import ListingCard from "./listings/ListingCard";
+
+import Container from "@/components/Container";
+import Heading from "@/components/Heading";
+import ListingCard from "@/components/listings/ListingCard";
 
 interface FavouriteClientProps {
   currentUser?: User | null;

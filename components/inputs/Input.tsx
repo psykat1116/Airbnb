@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { BiRupee } from "react-icons/bi";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface InputProps {
   id: string;

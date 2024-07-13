@@ -1,12 +1,9 @@
 "use client";
-import React, { useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
-import Avatar from "../Avatar";
-import MenuItem from "./MenuItem";
-import useRegisterModal from "@/hook/useRegisterModal";
-import useLoginModal from "@/hook/useLoginModal";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useOnClickOutside } from "usehooks-ts";
+import { useCallback, useState, useRef, ElementRef } from "react";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { GiCommercialAirplane } from "react-icons/gi";
@@ -15,6 +12,11 @@ import { IoIosSettings } from "react-icons/io";
 import { FaAirbnb } from "react-icons/fa";
 import { BsFillHouseCheckFill } from "react-icons/bs";
 import { FaUserPlus } from "react-icons/fa6";
+
+import Avatar from "@/components/Avatar";
+import MenuItem from "@/components/navbar/MenuItem";
+import useRegisterModal from "@/hook/useRegisterModal";
+import useLoginModal from "@/hook/useLoginModal";
 import useRentModal from "@/hook/useRentModal";
 
 interface UserMenuProps {
@@ -27,6 +29,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const { onOpen: onLoginOpen } = useLoginModal();
   const { onOpen: onRentOpen } = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
+  const NavRef = useRef<ElementRef<"div">>(null);
 
   const toggleOpen = useCallback(() => {
     //Different from video
@@ -39,6 +42,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     }
     onRentOpen();
   }, [currentUser, onLoginOpen, onRentOpen]);
+
+  useOnClickOutside(NavRef, () => setIsOpen(false));
 
   return (
     <div className="relative">
@@ -61,7 +66,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       </div>
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 overflow-hidden right-0 top-12 text-sm bg-white">
-          <div className="flex flex-col cursor-pointer">
+          <div className="flex flex-col cursor-pointer" ref={NavRef}>
             {currentUser ? (
               <>
                 <MenuItem

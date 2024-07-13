@@ -1,19 +1,18 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
+import { AiFillGithub } from "react-icons/ai";
+import { useCallback, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
+import Button from "@/components/Button";
+import Heading from "@/components/Heading";
+import Modal from "@/components/modals/Modal";
+import Input from "@/components/inputs/Input";
 import useLoginModal from "@/hook/useLoginModal";
 import useRegisterModal from "@/hook/useRegisterModal";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
-
-import Modal from "./Modal";
-import Heading from "../Heading";
-import Input from "../inputs/Input";
-import Button from "../Button";
 
 const LoginModal = () => {
   const router = useRouter();

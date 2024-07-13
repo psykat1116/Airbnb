@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import Container from "../Container";
-import Logo from "./Logo";
-import Search from "./Search";
-import UserMenu from "./UserMenu";
 import { User } from "@prisma/client";
-import Categories from "./Categories";
+
+import Logo from "@/components/navbar/Logo";
+import Container from "@/components/Container";
+import Search from "@/components/navbar/Search";
+import UserMenu from "@/components/navbar/UserMenu";
+import Categories from "@/components/navbar/Categories";
 
 interface NavbarProps {
   currentUser?: User | null;

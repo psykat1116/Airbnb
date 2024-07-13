@@ -1,10 +1,11 @@
 "use client";
+import { useMemo } from "react";
+import { useSearchParams } from "next/navigation";
+import { differenceInCalendarDays } from "date-fns";
+
+import { BiSearch } from "react-icons/bi";
 import useCountries from "@/hook/useCountries";
 import useSearchModal from "@/hook/useSearchModal";
-import { differenceInCalendarDays } from "date-fns";
-import { useSearchParams } from "next/navigation";
-import React, { useMemo } from "react";
-import { BiSearch } from "react-icons/bi";
 
 const Search = () => {
   const { onOpen } = useSearchModal();

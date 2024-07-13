@@ -1,17 +1,18 @@
 "use client";
-import useSearchModal from "@/hook/useSearchModal";
-import React, { useCallback, useMemo, useState } from "react";
-import Modal from "./Modal";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Range } from "react-date-range";
-import Map from "../Map";
-import { CountrySelectValue } from "@/types/Country";
 import qs from "query-string";
+import Map from "@/components/Map";
 import { formatISO } from "date-fns";
-import Heading from "../Heading";
-import CountrySelect from "../inputs/CountrySelect";
-import Calendar from "../inputs/Calendar";
-import Counter from "../inputs/Counter";
+import { Range } from "react-date-range";
+import { useCallback, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+import Heading from "@/components/Heading";
+import Modal from "@/components/modals/Modal";
+import Counter from "@/components/inputs/Counter";
+import useSearchModal from "@/hook/useSearchModal";
+import Calendar from "@/components/inputs/Calendar";
+import { CountrySelectValue } from "@/types/Country";
+import CountrySelect from "@/components/inputs/CountrySelect";
 
 enum STEPS {
   LOCATION = 0,

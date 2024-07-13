@@ -1,12 +1,13 @@
 "use client";
-import { Listing, Reservation, User } from "@prisma/client";
-import React, { useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
-import Container from "./Container";
-import Heading from "./Heading";
 import axios from "axios";
 import toast from "react-hot-toast";
-import ListingCard from "./listings/ListingCard";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import { Listing, Reservation, User } from "@prisma/client";
+
+import Heading from "@/components/Heading";
+import Container from "@/components/Container";
+import ListingCard from "@/components/listings/ListingCard";
 
 interface TripsClientProps {
   currentUser: User | null;

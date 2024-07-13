@@ -1,10 +1,10 @@
 "use client";
-import useCountries from "@/hook/useCountries";
-import { User } from "@prisma/client";
-import React from "react";
-import Heading from "../Heading";
 import Image from "next/image";
-import HeartButton from "../HeartButton";
+import { User } from "@prisma/client";
+
+import Heading from "@/components/Heading";
+import useCountries from "@/hook/useCountries";
+import HeartButton from "@/components/HeartButton";
 
 interface ListingHeadProps {
   title: string;

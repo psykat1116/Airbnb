@@ -1,12 +1,13 @@
 "use client";
-import { Listing, Reservation, User } from "@prisma/client";
-import React, { useCallback, useState } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
-import Heading from "./Heading";
-import Container from "./Container";
-import ListingCard from "./listings/ListingCard";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import { Listing, Reservation, User } from "@prisma/client";
+
+import Heading from "@/components/Heading";
+import Container from "@/components/Container";
+import ListingCard from "@/components/listings/ListingCard";
 
 interface ReservationClientProps {
   reservation: (Reservation & { listing: Listing })[];

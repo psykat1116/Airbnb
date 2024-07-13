@@ -1,4 +1,3 @@
-import React from "react";
 import Empty from "@/components/Empty";
 import getCurrentUser from "@/actions/getCurrentUser";
 import getReservation from "@/actions/getReservation";

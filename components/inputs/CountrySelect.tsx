@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import Image from "next/image";
+import Select from "react-select";
+
 import useCountries from "@/hook/useCountries";
 import { CountrySelectValue } from "@/types/Country";
-import Select from "react-select";
-import Image from "next/image";
 
 interface CountrySelectProps {
   value?: CountrySelectValue;

@@ -1,7 +1,6 @@
-import React from "react";
 import Empty from "@/components/Empty";
-import getCurrentUser from "@/actions/getCurrentUser";
 import getListings from "@/actions/getListings";
+import getCurrentUser from "@/actions/getCurrentUser";
 import PropertyClient from "@/components/PropertyClient";
 
 const Page = async () => {

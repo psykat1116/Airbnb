@@ -1,24 +1,20 @@
 "use client";
-import React, { useMemo, useState } from "react";
-import Modal from "./Modal";
-import useRentModal from "@/hook/useRentModal";
-import Heading from "../Heading";
-import { CategorieList } from "@/constant/CategorieList";
-import CategoryInput from "../inputs/CategoryInput";
-import {
-  FieldValues,
-  SubmitErrorHandler,
-  SubmitHandler,
-  useForm,
-} from "react-hook-form";
-import CountrySelect from "../inputs/CountrySelect";
-import Map from "../Map";
-import Counter from "../inputs/Counter";
-import ImageUpload from "../inputs/ImageUpload";
-import Input from "../inputs/Input";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
+import Map from "@/components/Map";
+import Heading from "@/components/Heading";
+import Input from "@/components/inputs/Input";
+import Modal from "@/components/modals/Modal";
+import useRentModal from "@/hook/useRentModal";
+import Counter from "@/components/inputs/Counter";
+import { CategorieList } from "@/constant/CategorieList";
+import ImageUpload from "@/components/inputs/ImageUpload";
+import CategoryInput from "@/components/inputs/CategoryInput";
+import CountrySelect from "@/components/inputs/CountrySelect";
 
 enum STEPS {
   CATEGORY = 0,
@@ -31,7 +27,7 @@ enum STEPS {
 
 const RentModal = () => {
   const router = useRouter();
-  const { isOpen, onOpen, onClose } = useRentModal();
+  const { isOpen, onClose } = useRentModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
   const [isLoading, setIsLoading] = useState(false);
 

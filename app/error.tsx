@@ -1,6 +1,6 @@
 "use client";
+import { useEffect } from "react";
 import Empty from "@/components/Empty";
-import React, { useEffect } from "react";
 
 interface ErrorProps {
   error: Error;

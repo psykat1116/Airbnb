@@ -1,11 +1,11 @@
 "use client";
-import useCountries from "@/hook/useCountries";
 import { User } from "@prisma/client";
-import React from "react";
 import { IconType } from "react-icons";
-import Avatar from "../Avatar";
-import ListingCategory from "./ListingCategory";
-import Map from "../Map";
+
+import Map from "@/components/Map";
+import Avatar from "@/components/Avatar";
+import useCountries from "@/hook/useCountries";
+import ListingCategory from "@/components/listings/ListingCategory";
 
 interface ListingInfoProps {
   user: User;

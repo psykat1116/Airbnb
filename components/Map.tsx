@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import L, { LatLngExpression } from "leaflet";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 
