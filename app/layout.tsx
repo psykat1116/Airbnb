@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { Nunito, Poppins } from "next/font/google";
 
 import Navbar from "@/components/navbar/Navbar";
-import RegisterModal from "@/components/modals/RegisterModal";
+import ModalProvider from "@/provider/ModalProvider";
 import ToaterProvider from "@/provider/ToastProvider";
-import LoginModal from "@/components/modals/LoginModal";
 import getCurrentUser from "@/actions/getCurrentUser";
-import RentModal from "@/components/modals/RentModal";
-import SearchModal from "@/components/modals/SearchModal";
 
 import "./globals.css";
 
@@ -23,11 +20,10 @@ const poppoins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://airbnb-psi-liart.vercel.app/"),
   title:
     "Airbnb | Holiday Rentals, Cabins, Beach Houses, Unique Homes & Experiences",
-  description: `${
-    new Date().getUTCDate
-  }-Find the perfect place to stay at an amazing price in 191 countries. Belong anywhere with Airbnb.`,
+  description: `Find the perfect place to stay at an amazing price in 191 countries. Belong anywhere with Airbnb.`,
   applicationName: "Airbnb Clone",
   keywords: [
     "Airbnb Clone",
@@ -48,9 +44,8 @@ export const metadata: Metadata = {
   openGraph: {
     title:
       "Airbnb | Holiday Rentals, Cabins, Beach Houses, Unique Homes & Experiences",
-    description: `${
-      new Date().getUTCDate
-    }-Find the perfect place to stay at an amazing price in 191 countries. Belong anywhere with Airbnb.`,
+    description:
+      "Find the perfect place to stay at an amazing price in 191 countries. Belong anywhere with Airbnb.",
     url: "https://airbnb-psi-liart.vercel.app/",
     type: "website",
     locale: "en_IN",
@@ -77,10 +72,7 @@ export default async function RootLayout({
       <body className={`${nunito.className} ${poppoins.className}`}>
         <Navbar currentUser={currentUser} />
         <ToaterProvider />
-        <RegisterModal />
-        <LoginModal />
-        <RentModal />
-        <SearchModal />
+        <ModalProvider />
         <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
