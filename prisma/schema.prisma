@@ -24,6 +24,7 @@ model User {
   accounts     Account[]
   listings     Listing[]
   reservations Reservation[]
+  Payment      Payment[]
 }
 
 model Account {
@@ -72,6 +73,23 @@ model Reservation {
   totalPrice Int
   createdAt  DateTime @default(now())
 
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  payment Payment?
+}
+
+model Payment {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String   @db.ObjectId
+  reservationId String   @db.ObjectId
+  paymentId     String
+  orderId       String
+  amount        Int
+  currency      String
+  createdAt     DateTime @default(now())
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reservation Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+
+  @@unique([reservationId])
 }

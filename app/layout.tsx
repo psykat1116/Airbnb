@@ -69,6 +69,9 @@ export default async function RootLayout({
   const currentUser = await getCurrentUser();
   return (
     <html lang="en">
+      <head>
+      <script async src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      </head>
       <body className={`${nunito.className} ${poppoins.className}`}>
         <Navbar currentUser={currentUser} />
         <ToaterProvider />
