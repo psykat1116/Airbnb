@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { Listing, Reservation, User } from "@prisma/client";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
-import "@/checkout.js";
 
 import Container from "@/components/Container";
 import useLoginModal from "@/hook/useLoginModal";
