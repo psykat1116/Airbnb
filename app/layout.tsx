@@ -32,8 +32,15 @@ export const metadata: Metadata = {
     "Beach Houses",
     "Unique Homes",
     "Experiences",
+    "Vacation Rentals",
+    "Apartments",
+    "Beach Rentals",
+    "Cabin Rentals",
+    "Condo Rentals",
+    "Beach House Rentals",
+    "Vacation Home Rentals",
+    "Vacation Rentals by Owner",
   ],
-  robots: "index, follow",
   authors: [
     {
       name: "Saikat Samanta",

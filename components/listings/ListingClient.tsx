@@ -37,11 +37,11 @@ const ListingClient: React.FC<ListingClientProps> = ({
   currentUser,
   reservations = [],
 }) => {
+  const router = useRouter();
+  const { onOpen } = useLoginModal();
   const [isLoaded, setIsLoaded] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(InitialDateRange);
-  const { onOpen } = useLoginModal();
-  const router = useRouter();
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
@@ -118,7 +118,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       currency: "INR",
       name: "Airbnb Clone",
       desscription: "Test Transaction",
-      image: "https://example.com/your_logo",
+      image: "https://github.com/psykat1116/Airbnb/blob/master/public/logo.png?raw=true",
       order_id: order.data.id,
       handler: async (response: any) => {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
@@ -132,10 +132,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
       prefill: {
         name: currentUser.name,
         email: currentUser.email,
-        contact: "1234567890",
+        contact: "+919999999999",
       },
       notes: {
-        address: "Razorpay Corporate Office",
+        address: "Demo Address",
       },
       theme: {
         color: "#3399cc",
