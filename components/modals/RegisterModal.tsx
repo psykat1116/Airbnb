@@ -15,7 +15,7 @@ import useLoginModal from "@/hook/useLoginModal";
 import useRegisterModal from "@/hook/useRegisterModal";
 
 const RegisterModal = () => {
-  const { isOpen, onClose, onOpen } = useRegisterModal();
+  const { isOpen, onClose } = useRegisterModal();
   const { onOpen: onLoginOpen } = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
   const {

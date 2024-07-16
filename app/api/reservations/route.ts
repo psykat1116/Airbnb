@@ -4,11 +4,6 @@ import getCurrentUser from "@/actions/getCurrentUser";
 import Razorpay from "razorpay";
 import crypto from "crypto";
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY!,
-  key_secret: process.env.RAZORPAY_SECRET!,
-});
-
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
@@ -69,7 +64,7 @@ export async function POST(request: Request) {
     take: 1,
   });
 
-  const payment = await prisma.payment.create({
+  await prisma.payment.create({
     data: {
       userId: currentUser.id,
       reservationId: reservation!.id,
