@@ -13,7 +13,7 @@ const Categories = () => {
   if(!isMainPage) return null;
   return (
     <Container>
-      <div className="pt-2 flex flex-row items-center justify-center overflow-x-auto">
+      <div className="pt-2 flex flex-row items-start sm:items-center justify-center overflow-x-auto">
         {CategorieList.map((item) => {
           return (
             <CategoryBox
