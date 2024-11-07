@@ -52,7 +52,7 @@ npm run dev
 - Use The Test Card Description Below. Please feel free to check out for more [Here](https://razorpay.com/docs/payments/payments/test-card-details/) For Card & [Here](https://razorpay.com/docs/payments/payments/test-upi-details/) With UPI.
 
 ```bash
-4111 1111 1111 1111
+5267 3181 8797 5449
 success@razorpay
 ```
 
