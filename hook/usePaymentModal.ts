@@ -1,5 +1,5 @@
-import { Payments } from "razorpay/dist/types/payments";
 import { create } from "zustand";
+import { Payments } from "razorpay/dist/types/payments";
 
 interface PaymentModalState {
   data: Payments.RazorpayPayment | null;

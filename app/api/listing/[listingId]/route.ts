@@ -1,5 +1,6 @@
-import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
+
+import prisma from "@/libs/prismadb";
 import getCurrentUser from "@/actions/getCurrentUser";
 
 interface IParams {
@@ -17,15 +18,12 @@ export async function DELETE(
       { status: 401 }
     );
   }
+
   const { listingId } = params;
   if (!listingId || typeof listingId !== "string") {
     return NextResponse.json({ error: "Invalid listingId" }, { status: 400 });
   }
-  const ImageId = await prisma.listing.findUnique({
-    where: {
-      id: listingId,
-    },
-  });
+
   const listing = await prisma.listing.deleteMany({
     where: {
       id: listingId,

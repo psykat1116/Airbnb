@@ -1,14 +1,15 @@
-import prisma from "@/libs/prismadb";
-import { NextResponse } from "next/server";
-import getCurrentUser from "@/actions/getCurrentUser";
-import Razorpay from "razorpay";
 import crypto from "crypto";
+import { NextResponse } from "next/server";
+
+import prisma from "@/libs/prismadb";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
+
   const body = await request.json();
   const {
     listingId,

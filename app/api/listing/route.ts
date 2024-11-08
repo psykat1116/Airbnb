@@ -1,5 +1,6 @@
-import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
+
+import prisma from "@/libs/prismadb";
 import getCurrentUser from "@/actions/getCurrentUser";
 
 export async function POST(request: Request) {
@@ -7,6 +8,7 @@ export async function POST(request: Request) {
   if (!currentUser) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
+
   const { id } = currentUser;
   const {
     title,
@@ -36,6 +38,7 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  
   const listing = await prisma.listing.create({
     data: {
       title,

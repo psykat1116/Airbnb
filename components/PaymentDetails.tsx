@@ -1,9 +1,10 @@
 "use client";
-import Button from "@/components/Button";
-import { usePaymentModal } from "@/hook/usePaymentModal";
-import toast from "react-hot-toast";
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
+
+import Button from "@/components/Button";
+import { usePaymentModal } from "@/hook/usePaymentModal";
 
 interface PaymentDetailsProps {
   reservationId: string;

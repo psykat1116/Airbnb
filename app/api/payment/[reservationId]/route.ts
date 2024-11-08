@@ -1,7 +1,8 @@
-import prisma from "@/libs/prismadb";
-import { NextResponse } from "next/server";
-import getCurrentUser from "@/actions/getCurrentUser";
 import Razorpay from "razorpay";
+import { NextResponse } from "next/server";
+
+import prisma from "@/libs/prismadb";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY!,

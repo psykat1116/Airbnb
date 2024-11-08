@@ -1,6 +1,7 @@
-import getCurrentUser from "@/actions/getCurrentUser";
-import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
+import { NextResponse } from "next/server";
+
+import getCurrentUser from "@/actions/getCurrentUser";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY!,

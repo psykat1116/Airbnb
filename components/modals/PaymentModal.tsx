@@ -7,13 +7,13 @@ const PaymentModal = () => {
   const { open, onClose, data } = usePaymentModal();
 
   let bodyContent = (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       <Heading
         title="Payment Details"
-        subtitle="Get your payment details Here"
+        subtitle=""
       />
       {data && (
-        <div className="flex flex-col space-y-4 items-center justify-start w-full">
+        <div className="flex flex-col space-y-3 items-center justify-start w-full">
           <div className="flex items-center justify-between p-2 gap-x-2 w-full border-b border-[#232323]">
             <label className="text-gray-500">Payment Id</label>
             <p className="font-semibold">{data.id}</p>
